@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:espaoil-server-swift}",
+            "name": "Debug EspaoilServerSwift",
+            "program": "${workspaceFolder:espaoil-server-swift}/.build/debug/EspaoilServerSwift",
+            "preLaunchTask": "swift: Build Debug EspaoilServerSwift"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:espaoil-server-swift}",
+            "name": "Release EspaoilServerSwift",
+            "program": "${workspaceFolder:espaoil-server-swift}/.build/release/EspaoilServerSwift",
+            "preLaunchTask": "swift: Build Release EspaoilServerSwift"
+        }
+    ]
+}

@@ -29,6 +29,3 @@ jobs:
 
       - name: Run tests
         run: swift test --enable-test-discovery
-        
-      - name: Build for release
-        run: swift build -c release

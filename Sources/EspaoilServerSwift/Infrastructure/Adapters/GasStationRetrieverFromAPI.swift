@@ -14,7 +14,7 @@ final class GasStationRetrieverFromAPI: GasStationRetriever {
             req.headers.add(name: .accept, value: "application/json")
         }
         let gasStationDTOs = try response.content.decode(RetrieverResponseDTO.self)
-        let gasStations = gasStationDTOs.prices.compactMap { $0.toDomain() }
+        let gasStations = try gasStationDTOs.prices.compactMap { try $0.toDomain() }
         return gasStations
     }
 }

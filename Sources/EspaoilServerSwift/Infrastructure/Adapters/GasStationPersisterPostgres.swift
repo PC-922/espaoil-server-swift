@@ -43,10 +43,10 @@ final class GasStationPersisterPostgres: GasStationPersister {
             )
             .all()
 
-        return Array(
+        return try Array(
             dtos
                 .filter { $0.prices.keys.contains(gasType) }
-                .map { $0.toDomain() }
+                .map { try $0.toDomain() }
                 .sorted { left, right in
                     guard let leftPrice = left.prices[gasType],
                         let rightPrice = right.prices[gasType]

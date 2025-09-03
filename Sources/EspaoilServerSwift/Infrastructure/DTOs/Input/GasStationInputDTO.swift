@@ -53,7 +53,7 @@ extension GasStationInputDTO {
 }
 
 extension GasStationInputDTO {
-    func toDomain() -> GasStation? {
+    func toDomain() throws -> GasStation {
         guard
             let name = self.name,
             let postalCode = self.postalCode,
@@ -63,9 +63,9 @@ extension GasStationInputDTO {
             let longitude = Double((self.longitude ?? "").replacingOccurrences(of: ",", with: ".").trimmingCharacters(in: .whitespaces)),
             let municipality = self.municipality,
             let province = self.province,
-            let locality = self.locality
+            let locality = self.locality 
         else {
-            return nil
+            throw EspaOilExceptions.failedToRetrieveGasStations
         }
         return GasStation(
             name: name,
@@ -73,8 +73,8 @@ extension GasStationInputDTO {
                 postalCode: postalCode,
                 address: address,
                 time: time,
-                coordinates: .init(
-                    latitude:  latitude,
+                coordinates: try Coordinates(
+                    latitude: latitude, 
                     longitude: longitude
                 ),
                 municipality: municipality,

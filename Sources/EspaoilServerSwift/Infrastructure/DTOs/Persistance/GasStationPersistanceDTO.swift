@@ -29,14 +29,14 @@ final class GasStationPersistanceDTO: Model, @unchecked Sendable {
         self.prices = prices
     }
 
-    func toDomain() -> GasStation {
+    func toDomain() throws -> GasStation {
         return GasStation(
             name: name,
             location: Location(
                 postalCode: location.postalCode,
                 address: location.address,
                 time: location.time,
-                coordinates: Coordinates(
+                coordinates: try Coordinates(
                     latitude: location.coordinates.latitude,
                     longitude: location.coordinates.longitude
                 ),

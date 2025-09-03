@@ -23,6 +23,10 @@ public func configure(_ app: Application) async throws {
     app.migrations.add(CreateGasStations())
     try await app.autoMigrate()
 
+    try configureRoutes(app)
+}
+
+public func configureRoutes(_ app: Application) throws {
     // register routes
     try routes(app)
 }
